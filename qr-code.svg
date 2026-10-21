@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+  <rect width="300" height="300" fill="#FFFFFF" rx="16"/>
+  <rect width="300" height="60" fill="#003D6B" rx="16"/>
+  <rect y="44" width="300" height="16" fill="#003D6B"/>
+  <text x="150" y="38" font-family="'Kanit', sans-serif" font-size="20" font-weight="bold" fill="#FFFFFF" text-anchor="middle">PromptPay / สแกนเพื่อชำระเงิน</text>
+  <g transform="translate(45, 80)">
+    <rect x="0" y="0" width="50" height="50" fill="#000000"/>
+    <rect x="5" y="5" width="40" height="40" fill="#FFFFFF"/>
+    <rect x="15" y="15" width="20" height="20" fill="#000000"/>
+    <rect x="160" y="0" width="50" height="50" fill="#000000"/>
+    <rect x="165" y="5" width="40" height="40" fill="#FFFFFF"/>
+    <rect x="175" y="15" width="20" height="20" fill="#000000"/>
+    <rect x="0" y="140" width="50" height="50" fill="#000000"/>
+    <rect x="5" y="145" width="40" height="40" fill="#FFFFFF"/>
+    <rect x="15" y="155" width="20" height="20" fill="#000000"/>
+    <rect x="70" y="10" width="20" height="20" fill="#000000"/>
+    <rect x="100" y="10" width="10" height="30" fill="#000000"/>
+    <rect x="120" y="30" width="20" height="20" fill="#000000"/>
+    <rect x="20" y="70" width="30" height="10" fill="#000000"/>
+    <rect x="70" y="60" width="40" height="40" fill="#000000"/>
+    <rect x="120" y="70" width="20" height="30" fill="#000000"/>
+    <rect x="150" y="60" width="30" height="20" fill="#000000"/>
+    <rect x="80" y="110" width="30" height="20" fill="#000000"/>
+    <rect x="120" y="120" width="40" height="20" fill="#000000"/>
+    <rect x="170" y="100" width="30" height="30" fill="#000000"/>
+    <rect x="70" y="150" width="20" height="30" fill="#000000"/>
+    <rect x="100" y="160" width="40" height="20" fill="#000000"/>
+    <rect x="150" y="140" width="30" height="40" fill="#000000"/>
+  </g>
+</svg>

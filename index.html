@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PTIS - Official Medical E-Commerce Store</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Kanit & Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            red: '#FF3B30',
+                            darkred: '#CC2D25',
+                            accent: '#FF6B60',
+                            dark: '#0D0F12',
+                            card: '#161920',
+                            border: '#2A2F3D'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Kanit', 'Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0D0F12;
+            color: #F3F4F6;
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(255, 59, 48, 0.15) 0%, transparent 50%),
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 100% 100%, 40px 40px, 40px 40px;
+        }
+        .glow-effect {
+            box-shadow: 0 0 25px rgba(255, 59, 48, 0.3);
+        }
+        .glow-effect-hover:hover {
+            box-shadow: 0 0 35px rgba(255, 59, 48, 0.5);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-brand-red selection:text-white">
+
+    <!-- Announcement Bar -->
+    <div class="bg-brand-red text-white text-xs py-2 px-4 text-center font-medium tracking-wide flex justify-center items-center gap-2">
+        <i class="fa-solid fa-truck-fast"></i>
+        <span>จัดส่งด่วนฟรีทั่วประเทศไทย! สำหรับโรงพยาบาล คลินิก และบุคลากรทางการแพทย์ทุกท่าน</span>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="sticky top-0 z-40 bg-brand-dark/90 backdrop-blur-md border-b border-brand-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center space-x-3">
+                <img src="logo.svg" alt="PTIS Logo" class="w-10 h-10">
+                <div>
+                    <span class="text-xl font-bold tracking-wider text-white">PTIS STORE</span>
+                    <span class="hidden sm:inline-block text-xs text-gray-400 ml-2 border-l border-gray-700 pl-2">Medical Innovation</span>
+                </div>
+            </a>
+
+            <!-- Nav Links -->
+            <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-300">
+                <a href="#products" class="hover:text-brand-red transition">เลือกซื้อสินค้า</a>
+                <a href="#demo" class="hover:text-brand-red transition">ทดลองสแกน</a>
+                <a href="#track" class="hover:text-brand-red transition">เช็คสถานะพัสดุ</a>
+                <a href="#costs" class="hover:text-brand-red transition">โครงสร้างราคา</a>
+                <a href="#team" class="hover:text-brand-red transition">ผู้จัดทำ</a>
+            </div>
+
+            <!-- Cart Header Button -->
+            <div class="flex items-center space-x-4">
+                <button onclick="toggleCartDrawer()" class="relative bg-brand-card hover:bg-gray-800 text-white p-3 rounded-full border border-brand-border transition">
+                    <i class="fa-solid fa-cart-shopping text-lg text-brand-red"></i>
+                    <span id="cartBadge" class="absolute -top-1 -right-1 bg-brand-red text-white text-[10px] font-bold rounded-full w-5 h-5 flex items-center justify-center">0</span>
+                </button>
+                <button onclick="openCheckoutModal()" class="hidden sm:flex bg-brand-red hover:bg-brand-darkred text-white px-5 py-2.5 rounded-full font-semibold text-sm transition glow-effect items-center space-x-2">
+                    <span>ชำระเงิน</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Banner -->
+    <section class="pt-12 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6">
+                <div class="inline-flex items-center space-x-2 bg-brand-red/10 border border-brand-red/30 px-4 py-1.5 rounded-full text-brand-red text-sm font-medium">
+                    <span class="w-2 h-2 rounded-full bg-brand-red animate-pulse"></span>
+                    <span>ระบบร้านค้าทางการ (Official Store)</span>
+                </div>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
+                    สั่งซื้อแหวนวัดไข้ <br>
+                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-brand-red to-orange-400">
+                        PTIS Ring Device
+                    </span>
+                </h1>
+                <p class="text-gray-400 text-lg leading-relaxed">
+                    อุปกรณ์ตรวจวัดอุณหภูมิร่างกายสวมใส่ติดตัว 24 ชั่วโมง ออกแบบเฉพาะสำหรับบุคลากรทางการแพทย์ สแกนเร็ว ไร้การสัมผัสโดยตรง
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 pt-2">
+                    <a href="#products" class="bg-brand-red hover:bg-brand-darkred text-white px-8 py-4 rounded-xl font-bold text-lg transition text-center shadow-lg shadow-brand-red/20 flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <span>ดูรายการสินค้าและสั่งซื้อ</span>
+                    </a>
+                    <a href="#track" class="bg-brand-card hover:bg-gray-800 text-gray-200 border border-brand-border px-8 py-4 rounded-xl font-semibold text-lg transition text-center flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-magnifying-glass-location text-brand-red"></i>
+                        <span>ติดตามสถานะพัสดุ</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Product Showcase Image -->
+            <div class="relative">
+                <div class="absolute -inset-1 bg-gradient-to-r from-brand-red to-orange-500 rounded-3xl blur-xl opacity-30 animate-pulse"></div>
+                <div class="relative bg-brand-card border border-brand-border rounded-3xl p-6 overflow-hidden">
+                    <img src="ptis-3d-model.svg" alt="PTIS 3D Device Model" class="w-full h-auto rounded-xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Catalog Section -->
+    <section id="products" class="py-16 bg-black/40 border-y border-brand-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12">
+                <div>
+                    <h2 class="text-3xl font-bold text-white mb-2">เลือกขนาดสินค้า (Ring Size)</h2>
+                    <p class="text-gray-400">เลือกขนาดแหวน PTIS ที่พอดีกับนิ้วมือสำหรับสวมใส่สแกนวัดไข้ได้ตลอดวัน</p>
+                </div>
+                <!-- Guarantee Badges -->
+                <div class="flex items-center space-x-4 mt-4 md:mt-0 text-xs text-gray-400">
+                    <span class="flex items-center space-x-1"><i class="fa-solid fa-shield-halved text-brand-red"></i> <span>ประกัน 1 ปี</span></span>
+                    <span class="flex items-center space-x-1"><i class="fa-solid fa-rotate-left text-brand-red"></i> <span>เปลี่ยนไซส์ฟรีใน 7 วัน</span></span>
+                </div>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Product Card 1: Size S -->
+                <div class="bg-brand-card border border-brand-border rounded-2xl p-6 flex flex-col justify-between hover:border-brand-red/50 transition relative group">
+                    <div>
+                        <div class="aspect-square bg-black rounded-xl p-2 mb-6 flex items-center justify-center relative overflow-hidden border border-brand-border">
+                            <span class="absolute top-3 left-3 bg-brand-red/20 text-brand-red border border-brand-red/40 text-xs font-bold px-2.5 py-1 rounded-md z-10">Size S</span>
+                            <img src="ring-product.svg" alt="PTIS Ring Device Size S" class="w-full h-full object-contain group-hover:scale-105 transition duration-300">
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-1">PTIS Ring Device (Size S)</h3>
+                        <p class="text-xs text-gray-400 mb-4">เส้นรอบวงนิ้ว 50 - 54 mm • สี Mat Black</p>
+                        <ul class="text-xs text-gray-300 space-y-2 mb-6">
+                            <li class="flex items-center"><i class="fa-solid fa-check text-brand-red mr-2"></i>ตัวเรือนสแตนเลสกันน้ำ 100%</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-brand-red mr-2"></i>เซนเซอร์วัดไข้แม่นยำสูง ±0.1°C</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-brand-red mr-2"></i>จอ LED แสดงผลฝั่งหลังมือ</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-end mb-4">
+                            <div>
+                                <span class="text-xs text-gray-500 line-through">฿1,250</span>
+                                <div class="text-2xl font-bold text-white font-mono">฿1,023</div>
+                            </div>
+                            <span class="text-xs text-green-400 bg-green-500/10 px-2 py-1 rounded">มีสินค้าพร้อมส่ง</span>
+                        </div>
+                        <button onclick="addToCart('PTIS Ring Device (Size S)', 1023, 'Size S (50-54mm)')" class="w-full bg-brand-red hover:bg-brand-darkred text-white font-bold py-3 rounded-xl transition flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-cart-plus"></i>
+                            <span>เพิ่มลงตะกร้า</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product Card 2: Size M (Best Seller) -->
+                <div class="bg-brand-card border-2 border-brand-red/80 rounded-2xl p-6 flex flex-col justify-between hover:border-brand-red transition relative group shadow-xl">
+                    <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand-red text-white text-xs font-bold px-4 py-1 rounded-full shadow-lg z-20">ยอดนิยม Best Seller</span>
+                    <div>
+                        <div class="aspect-square bg-black rounded-xl p-2 mb-6 flex items-center justify-center relative overflow-hidden border border-brand-border">
+                            <span class="absolute top-3 left-3 bg-brand-red/20 text-brand-red border border-brand-red/40 text-xs font-bold px-2.5 py-1 rounded-md z-10">Size M</span>
+                            <img src="ring-product.svg" alt="PTIS Ring Device Size M" class="w-full h-full object-contain group-hover:scale-105 transition duration-300">
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-1">PTIS Ring Device (Size M)</h3>
+                        <p class="text-xs text-gray-400 mb-4">เส้นรอบวงนิ้ว 55 - 58 mm • สี Mat Black</p>
+                        <ul class="text-xs text-gray-300 space-y-2 mb-6">
+                            <li class="flex items-center"><i class="fa-solid fa-check text-brand-red mr-2"></i>ตัวเรือนสแตนเลสกันน้ำ 100%</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-brand-red mr-2"></i>เซนเซอร์วัดไข้แม่นยำสูง ±0.1°C</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-brand-red mr-2"></i>จอ LED แสดงผลฝั่งหลังมือ</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-end mb-4">
+                            <div>
+                                <span class="text-xs text-gray-500 line-through">฿1,250</span>
+                                <div class="text-2xl font-bold text-white font-mono">฿1,023</div>
+                            </div>
+                            <span class="text-xs text-green-400 bg-green-500/10 px-2 py-1 rounded">มีสินค้าพร้อมส่ง</span>
+                        </div>
+                        <button onclick="addToCart('PTIS Ring Device (Size M)', 1023, 'Size M (55-58mm)')" class="w-full bg-brand-red hover:bg-brand-darkred text-white font-bold py-3 rounded-xl transition glow-effect flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-cart-plus"></i>
+                            <span>เพิ่มลงตะกร้า</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product Card 3: Size L -->
+                <div class="bg-brand-card border border-brand-border rounded-2xl p-6 flex flex-col justify-between hover:border-brand-red/50 transition relative group">
+                    <div>
+                        <div class="aspect-square bg-black rounded-xl p-2 mb-6 flex items-center justify-center relative overflow-hidden border border-brand-border">
+                            <span class="absolute top-3 left-3 bg-brand-red/20 text-brand-red border border-brand-red/40 text-xs font-bold px-2.5 py-1 rounded-md z-10">Size L</span>
+                            <img src="ring-product.svg" alt="PTIS Ring Device Size L" class="w-full h-full object-contain group-hover:scale-105 transition duration-300">
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-1">PTIS Ring Device (Size L)</h3>
+                        <p class="text-xs text-gray-400 mb-4">เส้นรอบวงนิ้ว 59 - 63 mm • สี Mat Black</p>
+                        <ul class="text-xs text-gray-300 space-y-2 mb-6">
+                            <li class="flex items-center"><i class="fa-solid fa-check text-brand-red mr-2"></i>ตัวเรือนสแตนเลสกันน้ำ 100%</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-brand-red mr-2"></i>เซนเซอร์วัดไข้แม่นยำสูง ±0.1°C</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-brand-red mr-2"></i>จอ LED แสดงผลฝั่งหลังมือ</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-end mb-4">
+                            <div>
+                                <span class="text-xs text-gray-500 line-through">฿1,250</span>
+                                <div class="text-2xl font-bold text-white font-mono">฿1,023</div>
+                            </div>
+                            <span class="text-xs text-green-400 bg-green-500/10 px-2 py-1 rounded">มีสินค้าพร้อมส่ง</span>
+                        </div>
+                        <button onclick="addToCart('PTIS Ring Device (Size L)', 1023, 'Size L (59-63mm)')" class="w-full bg-brand-red hover:bg-brand-darkred text-white font-bold py-3 rounded-xl transition flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-cart-plus"></i>
+                            <span>เพิ่มลงตะกร้า</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Shopping Cart Slide-Over Drawer -->
+    <div id="cartDrawer" class="fixed inset-0 z-50 overflow-hidden hidden">
+        <div onclick="toggleCartDrawer()" class="absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity"></div>
+        <div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
+            <div class="w-screen max-w-md bg-brand-card border-l border-brand-border p-6 flex flex-col justify-between relative shadow-2xl">
+                <div>
+                    <div class="flex justify-between items-center pb-4 border-b border-brand-border">
+                        <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-cart-shopping text-brand-red"></i>
+                            ตะกร้าสินค้าของคุณ
+                        </h3>
+                        <button onclick="toggleCartDrawer()" class="text-gray-400 hover:text-white">
+                            <i class="fa-solid fa-xmark text-xl"></i>
+                        </button>
+                    </div>
+
+                    <div id="cartItemsContainer" class="py-4 space-y-4 max-h-[60vh] overflow-y-auto">
+                        <div id="emptyCartMsg" class="text-center py-12 text-gray-500 text-sm">
+                            <i class="fa-solid fa-basket-shopping text-4xl mb-3 text-gray-700"></i>
+                            <p>ยังไม่มีสินค้าในตะกร้า</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="border-t border-brand-border pt-4 space-y-4">
+                    <div class="flex justify-between text-sm text-gray-400">
+                        <span>ค่าจัดส่ง</span>
+                        <span class="text-green-400 font-semibold">ฟรี (Free Shipping)</span>
+                    </div>
+                    <div class="flex justify-between text-lg font-bold text-white">
+                        <span>ราคารวมทั้งหมด</span>
+                        <span id="cartTotalPrice" class="font-mono text-brand-red">฿0</span>
+                    </div>
+                    <button onclick="openCheckoutModal()" class="w-full bg-brand-red hover:bg-brand-darkred text-white font-bold py-3.5 rounded-xl transition glow-effect flex items-center justify-center space-x-2">
+                        <span>ดำเนินการสั่งซื้อและชำระเงิน</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Full E-Commerce Checkout Modal -->
+    <div id="checkoutModal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden overflow-y-auto">
+        <div class="bg-brand-card border border-brand-border w-full max-w-2xl rounded-2xl p-6 sm:p-8 relative shadow-2xl my-8">
+            <button onclick="closeCheckoutModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="mb-6 border-b border-brand-border pb-4">
+                <h3 class="text-2xl font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-truck-ramp-box text-brand-red"></i>
+                    สั่งซื้อสินค้า & กรอกข้อมูลจัดส่ง
+                </h3>
+                <p class="text-gray-400 text-xs mt-1">กรอกที่อยู่ ชำระเงิน และแนบสลิปโอนเงินเพื่อยืนยันคำสั่งซื้อ</p>
+            </div>
+
+            <form id="checkoutForm" onsubmit="handleFinalCheckout(event)" class="space-y-6">
+                
+                <div class="space-y-4">
+                    <h4 class="text-sm font-semibold text-brand-red uppercase tracking-wider flex items-center gap-2">
+                        <i class="fa-solid fa-user"></i>
+                        1. ข้อมูลผู้สั่งซื้อ & ที่อยู่จัดส่ง
+                    </h4>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs text-gray-300 mb-1">ชื่อ-นามสกุล ผู้รับ *</label>
+                            <input type="text" id="custName" required placeholder="เช่น พญ. สมศรี ใจดี" class="w-full bg-black border border-brand-border rounded-xl px-4 py-2.5 text-sm text-white focus:border-brand-red focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs text-gray-300 mb-1">เบอร์โทรศัพท์ติดต่อ *</label>
+                            <input type="tel" id="custPhone" required placeholder="081-234-5678" class="w-full bg-black border border-brand-border rounded-xl px-4 py-2.5 text-sm text-white focus:border-brand-red focus:outline-none">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs text-gray-300 mb-1">ชื่อหน่วยงาน / โรงพยาบาล / คลินิก (ถ้ามี)</label>
+                        <input type="text" id="custOrg" placeholder="เช่น รพ.จุฬาลงกรณ์ วอร์ด 4" class="w-full bg-black border border-brand-border rounded-xl px-4 py-2.5 text-sm text-white focus:border-brand-red focus:outline-none">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs text-gray-300 mb-1">ที่อยู่จัดส่งโดยละเอียด *</label>
+                        <textarea id="custAddress" required rows="2" placeholder="บ้านเลขที่, ถนน, ตำบล/แขวง, อำเภอ/เขต, จังหวัด, รหัสไปรษณีย์" class="w-full bg-black border border-brand-border rounded-xl px-4 py-2.5 text-sm text-white focus:border-brand-red focus:outline-none"></textarea>
+                    </div>
+                </div>
+
+                <div class="space-y-4 border-t border-brand-border pt-4">
+                    <h4 class="text-sm font-semibold text-brand-red uppercase tracking-wider flex items-center gap-2">
+                        <i class="fa-solid fa-credit-card"></i>
+                        2. ชำระเงินผ่าน QR PromptPay
+                    </h4>
+
+                    <div class="bg-black p-4 rounded-xl border border-brand-border flex flex-col sm:flex-row items-center gap-6">
+                        <img src="qr-code.svg" alt="QR Code PromptPay" class="w-36 h-36 rounded-lg border border-gray-700">
+                        <div class="space-y-2 text-center sm:text-left">
+                            <span class="text-xs text-gray-400">สแกนชำระเงินเข้าบัญชีบริษัท</span>
+                            <p class="text-white font-bold text-base">บริษัท พีทีไอเอส เมดิคอล จำกัด</p>
+                            <p class="text-xs text-gray-400 font-mono">ธนาคารกสิกรไทย: 123-4-56789-0</p>
+                            <div class="pt-2">
+                                <span class="text-xs text-gray-400">ยอดชำระสุทธิ:</span>
+                                <span id="checkoutSummaryTotal" class="text-2xl font-bold font-mono text-brand-red ml-2">฿0</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs text-gray-300 mb-1">แนบหลักฐานการโอนเงิน (สลิปโอนเงิน) *</label>
+                        <input type="file" id="slipFile" accept="image/*" required class="w-full text-xs text-gray-400 bg-black border border-brand-border rounded-xl p-2 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-brand-red file:text-white hover:file:bg-brand-darkred">
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full bg-brand-red hover:bg-brand-darkred text-white font-bold py-4 rounded-xl transition glow-effect flex items-center justify-center space-x-2 shadow-lg">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span>ยืนยันการสั่งซื้อและแจ้งชำระเงิน</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Order Tracking Modal & Section -->
+    <section id="track" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-brand-card border border-brand-border rounded-2xl p-6 md:p-10">
+            <div class="max-w-2xl mx-auto text-center space-y-4">
+                <div class="w-12 h-12 bg-brand-red/10 text-brand-red rounded-full flex items-center justify-center mx-auto text-xl border border-brand-red/30">
+                    <i class="fa-solid fa-truck-fast"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-white">เช็คสถานะการจัดส่งพัสดุ (Order Tracking)</h2>
+                <p class="text-gray-400 text-sm">กรอกหมายเลขคำสั่งซื้อ (Order ID) หรือเบอร์โทรศัพท์เพื่อตรวจสอบสถานะ</p>
+
+                <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                    <input type="text" id="trackInput" placeholder="เช่น PTIS-98421 หรือ เบอร์โทรศัพท์" class="flex-grow bg-black border border-brand-border rounded-xl px-4 py-3 text-sm text-white focus:border-brand-red focus:outline-none">
+                    <button onclick="checkOrderStatus()" class="bg-brand-red hover:bg-brand-darkred text-white font-bold px-6 py-3 rounded-xl transition flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <span>ค้นหา</span>
+                    </button>
+                </div>
+
+                <div id="trackingResult" class="hidden mt-6 bg-black p-6 rounded-xl border border-brand-border text-left space-y-4">
+                    <div class="flex justify-between items-center border-b border-gray-800 pb-3">
+                        <span class="text-xs text-gray-400">Order ID: <strong id="trackResultId" class="text-white font-mono">PTIS-88241</strong></span>
+                        <span class="text-xs text-green-400 bg-green-500/10 px-3 py-1 rounded-full border border-green-500/30">จัดส่งเรียบร้อยแล้ว</span>
+                    </div>
+                    <div class="space-y-2 text-xs">
+                        <p class="text-gray-300"><strong class="text-white">ผู้รับ:</strong> คุณปภังกร สูตรสุข (รพ.จุฬาลงกรณ์)</p>
+                        <p class="text-gray-300"><strong class="text-white">พัสดุ:</strong> PTIS Ring Device (Size M) x 2</p>
+                        <p class="text-gray-300"><strong class="text-white">เลขพัสดุ Kerry Express:</strong> KEX90841244TH</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Live Simulator Section -->
+    <section id="demo" class="py-20 bg-black/40 border-t border-brand-border">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <h2 class="text-3xl font-bold text-white mb-3">ทดลองสแกนอุณหภูมิเสมือนจริง</h2>
+                <p class="text-gray-400">ระบบจำลองการทำงานของเซนเซอร์วัดไข้และหน้าจอ LED บนตัวแหวน</p>
+            </div>
+
+            <div class="bg-brand-card border border-brand-border rounded-2xl p-6 md:p-10 shadow-2xl">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="space-y-6">
+                        <h3 class="text-xl font-semibold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-hand-holding-medical text-brand-red"></i>
+                            โหมดทดสอบการสแกน
+                        </h3>
+                        <p class="text-sm text-gray-400">
+                            เพียงหงายนิ้วหรือยิงเซนเซอร์ไปยังผู้ป่วย ระบบจะแสดงผลอุณหภูมิบนจอ LED ฝั่งหลังมือทันที
+                        </p>
+                        <div class="flex flex-col gap-3">
+                            <button onclick="simulateScan(36.5)" class="w-full bg-gray-800 hover:bg-gray-700 text-white font-medium py-3 px-4 rounded-xl border border-gray-700 text-left flex justify-between items-center transition">
+                                <span>สแกนอุณหภูมิปกติ (36.5 °C)</span>
+                                <span class="w-3 h-3 rounded-full bg-green-500"></span>
+                            </button>
+                            <button onclick="simulateScan(38.2)" class="w-full bg-gray-800 hover:bg-gray-700 text-white font-medium py-3 px-4 rounded-xl border border-gray-700 text-left flex justify-between items-center transition">
+                                <span>สแกนพบผู้มีไข้สูง (38.2 °C)</span>
+                                <span class="w-3 h-3 rounded-full bg-brand-red"></span>
+                            </button>
+                            <button onclick="randomScan()" class="w-full bg-brand-red/20 hover:bg-brand-red/30 text-brand-red font-medium py-3 px-4 rounded-xl border border-brand-red/40 text-center transition">
+                                <i class="fa-solid fa-shuffle mr-2"></i>สุ่มค่าอุณหภูมิแบบ realtime
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="bg-black rounded-xl p-6 border-2 border-brand-border flex flex-col items-center justify-center min-h-[260px] text-center relative overflow-hidden">
+                        <div id="statusBg" class="absolute inset-0 bg-green-950/20 transition-all duration-500"></div>
+                        <div class="relative z-10 space-y-3">
+                            <span class="text-xs uppercase font-mono tracking-widest text-gray-500">PTIS Temperature Sensor</span>
+                            <div id="demoTemp" class="text-5xl font-mono font-bold text-green-400 my-2">36.5 °C</div>
+                            <div id="demoStatus" class="inline-block px-4 py-1 rounded-full text-xs font-semibold bg-green-500/20 text-green-400 border border-green-500/30">
+                                อุณหภูมิร่างกายปกติ (Normal)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cost Breakdown Section -->
+    <section id="costs" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2 class="text-3xl font-bold text-white mb-4">โครงสร้างราคาโปร่งใส</h2>
+            <p class="text-gray-400">เราเปิดเผยต้นทุนอย่างโปร่งใส เพื่อให้มั่นใจในคุณภาพชิ้นส่วนทางการแพทย์เกรดพรีเมียม</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-2 bg-brand-card border border-brand-border rounded-2xl p-6 sm:p-8">
+                <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                    <i class="fa-solid fa-receipt text-brand-red"></i>
+                    แจกแจงต้นทุนการผลิต (ต่อชิ้น)
+                </h3>
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center py-3 border-b border-brand-border/60">
+                        <span class="text-gray-300">1. ตัวเรือนโลหะ/สแตนเลสกันน้ำ</span>
+                        <span class="font-mono text-white">150 บาท</span>
+                    </div>
+                    <div class="flex justify-between items-center py-3 border-b border-brand-border/60">
+                        <span class="text-gray-300">2. เซนเซอร์วัดอุณหภูมิ & ชิปประมวลผล</span>
+                        <span class="font-mono text-white">250 บาท</span>
+                    </div>
+                    <div class="flex justify-between items-center py-3 border-b border-brand-border/60">
+                        <span class="text-gray-300">3. แบตเตอรี่ขนาดเล็กประหยัดพลังงาน</span>
+                        <span class="font-mono text-white">89 บาท</span>
+                    </div>
+                    <div class="flex justify-between items-center py-3 border-b border-brand-border/60">
+                        <span class="text-gray-300">4. จอ LED บอกอุณหภูมิขนาดเล็ก</span>
+                        <span class="font-mono text-white">85 บาท</span>
+                    </div>
+                    <div class="flex justify-between items-center py-3 border-b border-brand-border/60">
+                        <span class="text-gray-300">5. ค่าประกอบและบรรจุภัณฑ์มาตรฐาน</span>
+                        <span class="font-mono text-white">90 บาท</span>
+                    </div>
+                    <div class="flex justify-between items-center pt-2 font-semibold text-lg">
+                        <span class="text-gray-400">รวมต้นทุนการผลิตทั้งหมด</span>
+                        <span class="font-mono text-brand-red">664 บาท</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-gradient-to-b from-brand-card to-black border-2 border-brand-red/50 rounded-2xl p-8 flex flex-col justify-between relative overflow-hidden shadow-2xl">
+                <div class="absolute top-0 right-0 bg-brand-red text-white text-xs font-bold px-4 py-1 rounded-bl-lg">
+                    กำไรประมาณ 54%
+                </div>
+                <div>
+                    <span class="text-sm text-gray-400 uppercase font-semibold">ราคาขายจริง</span>
+                    <div class="text-5xl font-extrabold text-white my-4 font-mono">฿1,023</div>
+                    <p class="text-xs text-gray-400 leading-relaxed mb-6">
+                        ราคารวมการรับประกันเซนเซอร์ 1 ปีเต็ม พร้อมบริการจัดส่งด่วนฟรีสำหรับโรงพยาบาลและคลินิก
+                    </p>
+                </div>
+                <button onclick="openCheckoutModal()" class="w-full bg-brand-red hover:bg-brand-darkred text-white font-bold py-4 rounded-xl transition glow-effect shadow-lg">
+                    สั่งซื้อทันที
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Members Section -->
+    <section id="team" class="py-16 bg-black/40 border-t border-brand-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-3xl font-bold text-white mb-2">สมาชิกผู้จัดทำโครงการ</h2>
+                <p class="text-gray-400 text-sm">รายงาน Project Lateral Thinking</p>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+                <div class="bg-brand-card p-4 rounded-xl border border-brand-border text-center">
+                    <p class="text-white font-medium text-sm">ปภังกร สูตรสุข</p>
+                    <p class="text-xs text-brand-red font-mono mt-1">69160318</p>
+                </div>
+                <div class="bg-brand-card p-4 rounded-xl border border-brand-border text-center">
+                    <p class="text-white font-medium text-sm">ณชมงคล เจตศุภสุข</p>
+                    <p class="text-xs text-brand-red font-mono mt-1">69160135</p>
+                </div>
+                <div class="bg-brand-card p-4 rounded-xl border border-brand-border text-center">
+                    <p class="text-white font-medium text-sm">นายณัชพล วังวงศ์</p>
+                    <p class="text-xs text-brand-red font-mono mt-1">69160396</p>
+                </div>
+                <div class="bg-brand-card p-4 rounded-xl border border-brand-border text-center">
+                    <p class="text-white font-medium text-sm">พิตช์ ตม์ ตองมีทอง</p>
+                    <p class="text-xs text-brand-red font-mono mt-1">69160321</p>
+                </div>
+                <div class="bg-brand-card p-4 rounded-xl border border-brand-border text-center col-span-2 sm:col-span-1">
+                    <p class="text-white font-medium text-sm">ศุภกฤต ประพัศรางค์</p>
+                    <p class="text-xs text-brand-red font-mono mt-1">69160130</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12 border-t border-brand-border text-gray-500 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-6">
+            <div class="flex items-center space-x-3">
+                <img src="logo.svg" alt="Logo" class="w-8 h-8 opacity-80">
+                <div>
+                    <p class="text-white font-bold text-base">PTIS Store Online</p>
+                    <p class="text-xs">นวัตกรรมผสมผสานระหว่าง แหวน x เทอร์โมมิเตอร์</p>
+                </div>
+            </div>
+            <div class="text-center sm:text-right text-xs space-y-1">
+                <p>รายงาน Project Lateral Thinking</p>
+                <p>© 2026 PTIS Medical Inc. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        let cart = [];
+
+        function addToCart(title, price, size) {
+            const existingItem = cart.find(item => item.title === title && item.size === size);
+            if (existingItem) {
+                existingItem.qty += 1;
+            } else {
+                cart.push({ title, price, size, qty: 1 });
+            }
+            updateCartUI();
+            toggleCartDrawer();
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function changeQty(index, delta) {
+            cart[index].qty += delta;
+            if (cart[index].qty <= 0) {
+                cart.splice(index, 1);
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const container = document.getElementById('cartItemsContainer');
+            const badge = document.getElementById('cartBadge');
+            const totalDisplay = document.getElementById('cartTotalPrice');
+            const summaryTotal = document.getElementById('checkoutSummaryTotal');
+
+            let totalQty = 0;
+            let totalPrice = 0;
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div id="emptyCartMsg" class="text-center py-12 text-gray-500 text-sm">
+                        <i class="fa-solid fa-basket-shopping text-4xl mb-3 text-gray-700"></i>
+                        <p>ยังไม่มีสินค้าในตะกร้า</p>
+                    </div>`;
+            } else {
+                container.innerHTML = cart.map((item, index) => {
+                    totalQty += item.qty;
+                    totalPrice += item.price * item.qty;
+                    return `
+                        <div class="bg-black p-4 rounded-xl border border-brand-border flex justify-between items-center">
+                            <div>
+                                <h4 class="text-sm font-bold text-white">${item.title}</h4>
+                                <p class="text-xs text-gray-400">ขนาด: ${item.size}</p>
+                                <span class="text-sm font-mono text-brand-red font-bold">฿${(item.price * item.qty).toLocaleString()}</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="flex items-center bg-gray-900 border border-brand-border rounded-lg">
+                                    <button onclick="changeQty(${index}, -1)" class="px-2.5 py-1 text-gray-400 hover:text-white">-</button>
+                                    <span class="px-2 text-xs font-mono text-white">${item.qty}</span>
+                                    <button onclick="changeQty(${index}, 1)" class="px-2.5 py-1 text-gray-400 hover:text-white">+</button>
+                                </div>
+                                <button onclick="removeFromCart(${index})" class="text-gray-500 hover:text-red-400 text-sm">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>`;
+                }).join('');
+            }
+
+            badge.innerText = totalQty;
+            totalDisplay.innerText = '฿' + totalPrice.toLocaleString();
+            summaryTotal.innerText = '฿' + totalPrice.toLocaleString();
+        }
+
+        function toggleCartDrawer() {
+            const drawer = document.getElementById('cartDrawer');
+            drawer.classList.toggle('hidden');
+        }
+
+        function openCheckoutModal() {
+            if (cart.length === 0) {
+                alert('กรุณาเลือกสินค้าลงตะกร้าก่อนดำเนินการชำระเงิน');
+                return;
+            }
+            document.getElementById('cartDrawer').classList.add('hidden');
+            document.getElementById('checkoutModal').classList.remove('hidden');
+        }
+
+        function closeCheckoutModal() {
+            document.getElementById('checkoutModal').classList.add('hidden');
+        }
+
+        function handleFinalCheckout(e) {
+            e.preventDefault();
+            const name = document.getElementById('custName').value;
+            const phone = document.getElementById('custPhone').value;
+            const orderId = 'PTIS-' + Math.floor(10000 + Math.random() * 90000);
+
+            alert(`ขอบคุณสำหรับคำสั่งซื้อ คุณ${name}!
+
+รหัสคำสั่งซื้อของคุณคือ: ${orderId}
+ระบบได้บันทึกข้อมูลจัดส่งและแจ้งชำระเงินเรียบร้อยแล้ว ทีมงานจะดำเนินการจัดส่งด่วนให้เร็วที่สุดครับ`);
+            
+            cart = [];
+            updateCartUI();
+            closeCheckoutModal();
+        }
+
+        function checkOrderStatus() {
+            const val = document.getElementById('trackInput').value;
+            if (!val) {
+                alert('กรุณากรอก Order ID หรือเบอร์โทรศัพท์');
+                return;
+            }
+            document.getElementById('trackResultId').innerText = val.toUpperCase();
+            document.getElementById('trackingResult').classList.remove('hidden');
+        }
+
+        function simulateScan(temp) {
+            const display = document.getElementById('demoTemp');
+            const status = document.getElementById('demoStatus');
+            const bg = document.getElementById('statusBg');
+
+            display.innerText = temp.toFixed(1) + ' °C';
+
+            if (temp >= 37.5) {
+                display.className = "text-5xl font-mono font-bold text-red-500 my-2 animate-bounce";
+                status.className = "inline-block px-4 py-1 rounded-full text-xs font-semibold bg-red-500/20 text-red-400 border border-red-500/30";
+                status.innerText = "ตรวจพบไข้สูง (Fever Alert!)";
+                bg.className = "absolute inset-0 bg-red-950/40 transition-all duration-500";
+            } else {
+                display.className = "text-5xl font-mono font-bold text-green-400 my-2";
+                status.className = "inline-block px-4 py-1 rounded-full text-xs font-semibold bg-green-500/20 text-green-400 border border-green-500/30";
+                status.innerText = "อุณหภูมิร่างกายปกติ (Normal)";
+                bg.className = "absolute inset-0 bg-green-950/20 transition-all duration-500";
+            }
+        }
+
+        function randomScan() {
+            const randomTemp = (Math.random() * (39.5 - 36.0) + 36.0);
+            simulateScan(randomTemp);
+        }
+    </script>
+</body>
+</html>

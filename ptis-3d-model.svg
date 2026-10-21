@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <rect width="800" height="600" fill="#161920" rx="20"/>
+  <rect width="800" height="600" fill="none" stroke="#2A2F3D" stroke-width="2" rx="20"/>
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#FFFFFF" stroke-opacity="0.05" stroke-width="1"/>
+  </pattern>
+  <rect width="800" height="600" fill="url(#grid)" rx="20"/>
+  <g transform="translate(400, 320)">
+    <ellipse cx="0" cy="140" rx="180" ry="40" fill="#000000" opacity="0.6"/>
+    <ellipse cx="0" cy="0" rx="180" ry="100" fill="none" stroke="#2D3748" stroke-width="36"/>
+    <ellipse cx="0" cy="0" rx="180" ry="100" fill="none" stroke="#4A5568" stroke-width="12"/>
+    <rect x="-90" y="-125" width="180" height="65" rx="12" fill="#0D0F12" stroke="#FF3B30" stroke-width="3"/>
+    <text x="0" y="-95" font-family="monospace" font-size="14" fill="#A0AEC0" text-anchor="middle" letter-spacing="2">BODY TEMP</text>
+    <text x="0" y="-72" font-family="monospace" font-size="24" font-weight="bold" fill="#48BB78" text-anchor="middle">36.5 °C</text>
+    <circle cx="0" cy="100" r="14" fill="#742A2A" stroke="#FF3B30" stroke-width="2"/>
+    <circle cx="0" cy="100" r="6" fill="#FF3B30"/>
+  </g>
+  <text x="400" y="550" font-family="'Kanit', sans-serif" font-size="18" fill="#A0AEC0" text-anchor="middle">ภาพจำลองโมเดล PTIS Ring Device (3D Concept Visual)</text>
+</svg>

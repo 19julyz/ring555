@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <radialGradient id="grad1" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" style="stop-color:#FF3B30;stop-opacity:0.2" />
+      <stop offset="100%" style="stop-color:#0D0F12;stop-opacity:1" />
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#0D0F12"/>
+  <rect width="1200" height="630" fill="url(#grad1)"/>
+  <path d="M 0 100 L 1200 100 M 0 200 L 1200 200 M 0 300 L 1200 300 M 0 400 L 1200 400 M 0 500 L 1200 500" stroke="#FFFFFF" stroke-opacity="0.05" stroke-width="1"/>
+  <circle cx="200" cy="315" r="100" fill="none" stroke="#FF3B30" stroke-width="12"/>
+  <path d="M 180 255 H 220 V 295 H 260 V 335 H 220 V 375 H 180 V 335 H 140 V 295 H 180 Z" fill="#FF3B30"/>
+  <text x="350" y="280" font-family="'Kanit', sans-serif" font-size="64" font-weight="bold" fill="#FFFFFF">PTIS Store Online</text>
+  <text x="350" y="340" font-family="'Kanit', sans-serif" font-size="32" fill="#FF3B30" font-weight="600">Portable Thermal Identification System</text>
+  <text x="350" y="390" font-family="'Kanit', sans-serif" font-size="22" fill="#A0AEC0">ระบบตะกร้าสินค้า ชำระเงิน แนบสลิป และติดตามสถานะครบวงจร</text>
+</svg>

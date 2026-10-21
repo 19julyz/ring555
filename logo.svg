@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
+  <rect width="500" height="500" fill="#0D0F12"/>
+  <circle cx="250" cy="250" r="200" fill="none" stroke="#FF3B30" stroke-width="24"/>
+  <path d="M 210 130 H 290 V 210 H 370 V 290 H 290 V 370 H 210 V 290 H 130 V 210 H 210 Z" fill="#FF3B30"/>
+  <path d="M 220 220 H 280 V 240 H 260 V 280 H 240 V 240 H 220 Z" fill="#FFFFFF"/>
+  <text x="250" y="440" font-family="'Kanit', sans-serif" font-size="48" font-weight="bold" fill="#FF3B30" text-anchor="middle">PTIS</text>
+  <text x="250" y="475" font-family="'Kanit', sans-serif" font-size="16" fill="#A0AEC0" text-anchor="middle">PORTABLE THERMAL IDENTIFICATION SYSTEM</text>
+</svg>
